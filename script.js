@@ -200,3 +200,35 @@ document.getElementById('stand-button').addEventListener('click', stand);
 
 // Initialize game when page loads
 createDeck();
+
+// Function to get image path for a card
+function getCardImagePath(card) {
+    return `images/cards/${card.value.toLowerCase()}_of_${card.suit.toLowerCase()}.png`;
+}
+
+// Function to update the UI (showing cards and scores)
+function updateUI() {
+    const dealerCardsDiv = document.getElementById('dealer-cards');
+    const playerCardsDiv = document.getElementById('player-cards');
+
+    dealerCardsDiv.innerHTML = dealerHand.map(card => `<img src="${getCardImagePath(card)}" alt="${card.value} of ${card.suit}">`).join('');
+    playerCardsDiv.innerHTML = playerHand.map(card => `<img src="${getCardImagePath(card)}" alt="${card.value} of ${card.suit}">`).join('');
+
+    document.getElementById('player-score').innerText = `${playerScore}`;
+    document.getElementById('dealer-score').innerText = `${dealerScore}`;
+
+    // Update wallets
+    document.getElementById('player-wallet').innerText = playerWallet;
+    document.getElementById('dealer-wallet').innerText = dealerWallet;
+
+    // Check for game over
+    if (isGameOver) {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerText = getResultMessage();
+        resultDiv.className = getResultClass(); // Set the color class
+        
+        // Re-enable deal button after game ends
+        dealButton.style.visibility = 'visible';  // Make "Deal" button visible again
+        betInput.disabled = false;  // Enable bet input after match ends
+    }
+}
