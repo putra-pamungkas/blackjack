@@ -1,25 +1,4 @@
- /* 
-
-
-#dealer, #player {
-    width: 500px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.card{ 
-    background-color: #333; 
-    border-radius: 10px;
-    margin: 20px;
-    padding: 20px;
-    width: 300px; 
-}
- 
-*/
-
-html {
+ html {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,6 +26,9 @@ body {
     background-color: rgb(90, 90, 90); 
     margin: 30px 0;
     border-radius: 10px;
+    position: absolute;
+    z-index: 999;
+    top: 0;
 }
  
 #player{
@@ -56,6 +38,9 @@ body {
     border-radius: 10px;
     display: flex; 
     flex-direction: column;
+    position: absolute;
+    z-index: 999;
+    bottom: 0;
 }
  
 #player .wallet{
@@ -100,6 +85,7 @@ button {
 #board{
     width: 90%;
     height: 60%;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,6 +108,16 @@ button:hover {
     background-color: #0077cc;
 }
 
+.card-container {
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+.card-container img {
+    width: 50px;
+    height: auto;
+}
 
 #result {   
     font-size: 38px;
